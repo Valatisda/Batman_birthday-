@@ -1,185 +1,190 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Batman Birthday Transmission</title><style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+<title>Wayne Enterprises Transmission</title>
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
 body{
-    background:linear-gradient(to bottom,#000000,#08111f);
-    overflow:hidden;
-    font-family:Arial, sans-serif;
-    color:white;
+    margin:0;
     height:100vh;
+    overflow:hidden;
+    font-family:'Poppins', sans-serif;
+    color:white;
+    background: radial-gradient(circle at top, #0b0f1a, #000000);
 }
 
-.sky{
+/* Animated Batman shadow */
+.batman-bg{
     position:absolute;
     width:100%;
     height:100%;
+    background:url("https://i.imgur.com/3ZQ3Z8F.png") center/contain no-repeat;
+    opacity:0.07;
+    animation: float 6s ease-in-out infinite;
 }
 
-.star{
-    position:absolute;
-    background:white;
-    border-radius:50%;
-    animation:twinkle 3s infinite;
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-18px);}
 }
 
-@keyframes twinkle{
-    0%,100%{opacity:.2;}
-    50%{opacity:1;}
-}
-
-.city{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:220px;
-    background:
-    linear-gradient(to right,
-    #111 0%, #111 5%,
-    #1c1c1c 5%, #1c1c1c 10%,
-    #111 10%, #111 15%,
-    #1c1c1c 15%, #1c1c1c 22%,
-    #111 22%, #111 28%,
-    #1c1c1c 28%, #1c1c1c 40%,
-    #111 40%, #111 52%,
-    #1c1c1c 52%, #1c1c1c 70%,
-    #111 70%, #111 100%);
-}
-
+/* Bat signal glow */
 .signal{
     position:absolute;
-    top:10%;
+    top:6%;
     left:50%;
-    width:450px;
-    height:450px;
     transform:translateX(-50%);
+    width:420px;
+    height:420px;
     border-radius:50%;
     background:radial-gradient(circle,
-    rgba(255,215,0,.45),
-    rgba(255,215,0,.15),
-    transparent 70%);
-    animation:sweep 5s infinite alternate;
+        rgba(255,215,0,0.35),
+        rgba(255,215,0,0.12),
+        transparent 70%);
+    animation: pulse 4s infinite alternate;
 }
 
-@keyframes sweep{
-    from{
-        transform:translateX(-50%) rotate(-8deg);
-    }
-    to{
-        transform:translateX(-50%) rotate(8deg);
-    }
+@keyframes pulse{
+    from{transform:translateX(-50%) scale(1);}
+    to{transform:translateX(-50%) scale(1.12);}
 }
 
-.bat{
-    position:absolute;
-    top:16%;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:90px;
-    color:#ffd700;
-}
-
-.content{
-    position:absolute;
-    width:100%;
+/* Main container */
+.container{
+    position:relative;
+    z-index:2;
+    text-align:center;
     top:50%;
     transform:translateY(-50%);
-    text-align:center;
     padding:20px;
 }
 
 h1{
+    font-family:'Orbitron', sans-serif;
     color:#ffd700;
-    margin-bottom:20px;
-    font-size:3rem;
+    font-size:2.7rem;
+    letter-spacing:2px;
+    margin-bottom:10px;
 }
 
 .message{
     max-width:700px;
     margin:auto;
+    font-size:1.05rem;
     line-height:1.8;
-    font-size:1.1rem;
+    opacity:0.95;
 }
 
-.button{
-    margin-top:30px;
+/* Button */
+button{
+    margin-top:25px;
     padding:15px 30px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
     background:#ffd700;
-    color:black;
+    color:#000;
     font-weight:bold;
-    font-size:18px;
     cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
 }
 
-.button:hover{
-    transform:scale(1.05);
+button:hover{
+    transform:scale(1.06);
+    box-shadow:0 0 18px #ffd700;
 }
 
+/* small text */
 .small{
-    margin-top:15px;
-    color:#ddd;
+    margin-top:12px;
+    font-size:12px;
+    opacity:0.6;
 }
-</style></head><body><div class="sky" id="sky"></div><div class="signal"></div><div class="bat">🦇</div><div class="content"><h1>HAPPY BIRTHDAY BATMAN</h1><div class="message"><p>
-⚠️ Wayne Enterprises Secure Transmission ⚠️
-</p><br><p>
-Attention Batman,
-</p><p>
-The Bat-Signal has been activated for a very important reason.
-</p><p>
-Today isn't about saving Gotham.
-</p><p>
-Today is about celebrating you.
-</p><p>
-Thank you for being the kind, funny, thoughtful, and wonderful person that you are.
-</p><p>
-I hope this year brings you happiness, success, unforgettable adventures, and everything your heart desires.
-</p><p>
-May your Batmobile always have fuel, your gadgets always work, and your snacks never run out.
-</p><p>
-Most importantly, I hope you know how appreciated you are.
-</p><br><p>
-🖤 Happy Birthday Batman 🖤
-</p><p>
-From your favorite citizen of Gotham.
-</p></div><button class="button" onclick="playVoice()">
-🎙️ Play Secret Message
-</button><div class="small">
-Authorized by Wayne Enterprises
-</div><audio id="voice">
-<source src="Voice 013.m4a" type="audio/mpeg">
-</audio></div><script>
 
+/* stars */
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
+/* subtle overlay */
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.7));
+}
+</style>
+</head>
+
+<body>
+
+<div class="batman-bg"></div>
+<div class="signal"></div>
+<div class="overlay"></div>
+
+<div class="container">
+
+<h1>HAPPY BIRTHDAY BATMAN 🦇</h1>
+
+<div class="message">
+
+Wayne Enterprises Secure Channel Activated…<br><br>
+
+Gotham City reports a rare event today — not chaos… but celebration.<br><br>
+
+A hero is being acknowledged for everything he is, and everything he does without asking for recognition.<br><br>
+
+Thank you for your strength, your humor, your loyalty, and your presence in the lives of those who matter to you.<br><br>
+
+May this year bring clarity in your path, peace in your mind, and wins that feel earned and deserved.<br><br>
+
+🖤 Gotham is better with you in it.<br><br>
+
+</div>
+
+<button onclick="playVoice()">🎙️ Play Secret Message</button>
+
+<audio id="voice">
+<source src="Voice 013.m4a" type="audio/mpeg">
+</audio>
+
+<div class="small">Encrypted Transmission • Wayne Enterprises</div>
+
+</div>
+
+<script>
+
+/* voice note */
 function playVoice(){
 document.getElementById("voice").play();
 }
 
-const sky=document.getElementById("sky");
-
-for(let i=0;i<120;i++){
-
-const star=document.createElement("div");
-
-star.classList.add("star");
-
+/* stars */
+for(let i=0;i<100;i++){
+let star=document.createElement("div");
+star.className="star";
 star.style.width=Math.random()*3+"px";
 star.style.height=star.style.width;
-
 star.style.left=Math.random()*100+"%";
 star.style.top=Math.random()*100+"%";
-
 star.style.animationDelay=Math.random()*3+"s";
-
-sky.appendChild(star);
+document.body.appendChild(star);
 }
 
-</script></body>
-  </html>
+</script>
+
+</body>
+</html>
