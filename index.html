@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wayne Enterprises Transmission</title>
+<title>Secure Transmission</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -15,38 +14,32 @@ body{
     overflow:hidden;
     font-family:'Poppins', sans-serif;
     color:white;
-    background: radial-gradient(circle at top, #0b0f1a, #000000);
+    background: radial-gradient(circle at top, #0a0f1f, #000000);
 }
 
-/* Animated Batman shadow */
-.batman-bg{
+/* Gotham atmosphere (no images used) */
+.cityGlow{
     position:absolute;
+    bottom:0;
     width:100%;
-    height:100%;
-    background:url("https://i.imgur.com/3ZQ3Z8F.png") center/contain no-repeat;
-    opacity:0.07;
-    animation: float 6s ease-in-out infinite;
+    height:40%;
+    background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
 }
 
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-18px);}
-}
-
-/* Bat signal glow */
+/* Bat-signal */
 .signal{
     position:absolute;
-    top:6%;
+    top:8%;
     left:50%;
     transform:translateX(-50%);
     width:420px;
     height:420px;
     border-radius:50%;
     background:radial-gradient(circle,
-        rgba(255,215,0,0.35),
-        rgba(255,215,0,0.12),
+        rgba(255,215,0,0.25),
+        rgba(255,215,0,0.08),
         transparent 70%);
-    animation: pulse 4s infinite alternate;
+    animation:pulse 4s infinite alternate;
 }
 
 @keyframes pulse{
@@ -54,7 +47,20 @@ body{
     to{transform:translateX(-50%) scale(1.12);}
 }
 
-/* Main container */
+/* floating stars */
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
+/* content */
 .container{
     position:relative;
     z-index:2;
@@ -67,20 +73,19 @@ body{
 h1{
     font-family:'Orbitron', sans-serif;
     color:#ffd700;
-    font-size:2.7rem;
+    font-size:2.4rem;
     letter-spacing:2px;
-    margin-bottom:10px;
 }
 
 .message{
-    max-width:700px;
+    max-width:720px;
     margin:auto;
     font-size:1.05rem;
     line-height:1.8;
     opacity:0.95;
 }
 
-/* Button */
+/* button */
 button{
     margin-top:25px;
     padding:15px 30px;
@@ -95,45 +100,23 @@ button{
 }
 
 button:hover{
-    transform:scale(1.06);
-    box-shadow:0 0 18px #ffd700;
+    transform:scale(1.05);
+    box-shadow:0 0 15px #ffd700;
 }
 
-/* small text */
+/* small label */
 .small{
     margin-top:12px;
     font-size:12px;
     opacity:0.6;
-}
-
-/* stars */
-.star{
-    position:absolute;
-    background:white;
-    border-radius:50%;
-    animation: twinkle 3s infinite;
-}
-
-@keyframes twinkle{
-    0%,100%{opacity:0.2;}
-    50%{opacity:1;}
-}
-
-/* subtle overlay */
-.overlay{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.7));
 }
 </style>
 </head>
 
 <body>
 
-<div class="batman-bg"></div>
 <div class="signal"></div>
-<div class="overlay"></div>
+<div class="cityGlow"></div>
 
 <div class="container">
 
@@ -147,7 +130,7 @@ Gotham City reports a rare event today — not chaos… but celebration.<br><br>
 
 A hero is being acknowledged for everything he is, and everything he does without asking for recognition.<br><br>
 
-Thank you for your strength, your humor, your loyalty, and your presence in the lives of those who matter to you.<br><br>
+Thank you for your strength, your humor, your loyalty, and your presence in the lives of those who matter to you.Thank you for being a true friend, ever so kind , funny and loving. God bless you Humphrey. You are the absolute best.<br><br>
 
 May this year bring clarity in your path, peace in your mind, and wins that feel earned and deserved.<br><br>
 
@@ -167,13 +150,13 @@ May this year bring clarity in your path, peace in your mind, and wins that feel
 
 <script>
 
-/* voice note */
+/* voice */
 function playVoice(){
 document.getElementById("voice").play();
 }
 
 /* stars */
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 let star=document.createElement("div");
 star.className="star";
 star.style.width=Math.random()*3+"px";
